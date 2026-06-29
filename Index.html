@@ -8,52 +8,168 @@
 <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
 
 <style>
-body{
-  margin:0;
-  background:#0a0a0a;
-  color:white;
-  font-family:Arial;
+:root{
+  --bg:#0a0a0a;
+  --text:#fff;
+  --muted:#888;
 }
 
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  scroll-behavior:smooth;
+}
+
+body{
+  background:var(--bg);
+  color:var(--text);
+  font-family:Arial, sans-serif;
+}
+
+/* NAV */
 nav{
-  padding:20px;
   display:flex;
   justify-content:space-between;
+  padding:25px 50px;
+  position:fixed;
+  width:100%;
+  top:0;
+  z-index:10;
+  backdrop-filter:blur(10px);
 }
 
 .logo{
   font-family:'Bebas Neue';
-  letter-spacing:5px;
+  letter-spacing:6px;
+  font-size:20px;
 }
 
+/* HERO */
 .hero{
   height:100vh;
   display:flex;
+  flex-direction:column;
   justify-content:center;
   align-items:center;
-  flex-direction:column;
+  text-align:center;
+  position:relative;
 }
 
-h1{
+.hero h1{
   font-family:'Bebas Neue';
-  font-size:80px;
-  margin:0;
+  font-size:130px;
+  letter-spacing:8px;
+  animation:fadeUp 1.2s ease;
 }
 
+.hero p{
+  color:var(--muted);
+  letter-spacing:6px;
+  margin-top:10px;
+  animation:fadeUp 1.6s ease;
+}
+
+@keyframes fadeUp{
+  from{opacity:0; transform:translateY(30px);}
+  to{opacity:1; transform:translateY(0);}
+}
+
+/* SECTION */
 section{
-  padding:50px 20px;
+  padding:120px 50px;
+}
+
+.title{
+  font-family:'Bebas Neue';
+  font-size:42px;
+  letter-spacing:5px;
+  margin-bottom:40px;
+}
+
+/* GRID */
+.grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:15px;
 }
 
 .item{
-  height:200px;
-  background:#222;
+  overflow:hidden;
+  position:relative;
+  border:1px solid #1a1a1a;
+}
+
+.item img{
+  width:100%;
+  height:420px;
+  object-fit:cover;
+  transition:0.6s ease;
+  filter:grayscale(30%);
+}
+
+.item:hover img{
+  transform:scale(1.1);
+  filter:grayscale(0%);
+  opacity:0.9;
+}
+
+/* DETAILS */
+.details{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:20px;
+}
+
+.box{
+  border:1px solid #1a1a1a;
+  padding:40px;
+  transition:0.3s;
+}
+
+.box:hover{
+  border-color:#333;
+  transform:translateY(-5px);
+}
+
+.box h3{
+  font-family:'Bebas Neue';
+  letter-spacing:3px;
   margin-bottom:10px;
 }
 
+.box p{
+  color:var(--muted);
+  font-size:13px;
+  line-height:1.7;
+}
+
+/* ABOUT */
+.about{
+  max-width:800px;
+  margin:auto;
+  text-align:center;
+  color:var(--muted);
+  line-height:1.9;
+  font-size:14px;
+}
+
+/* FOOTER */
 footer{
   text-align:center;
-  padding:30px;
-  border-top:1px solid #222;
+  padding:50px;
+  border-top:1px solid #1a1a1a;
+  font-size:12px;
+  color:#666;
+  letter-spacing:3px;
+}
+
+/* MOBILE */
+@media(max-width:768px){
+  .hero h1{font-size:60px;}
+  .grid{grid-template-columns:1fr;}
+  .details{grid-template-columns:1fr;}
+  nav{padding:20px;}
 }
 </style>
 </head>
@@ -64,19 +180,58 @@ footer{
   <div class="logo">UB</div>
 </nav>
 
+<!-- HERO -->
 <div class="hero">
   <h1>UNIQUE BRAIN</h1>
   <p>WEAR DIFFERENT</p>
 </div>
 
+<!-- COLLECTION -->
 <section>
-  <div class="item"></div>
-  <div class="item"></div>
-  <div class="item"></div>
+  <div class="title">COLLECTION</div>
+
+  <div class="grid">
+    <div class="item"><img src="1.jpg"></div>
+    <div class="item"><img src="2.jpg"></div>
+    <div class="item"><img src="3.jpg"></div>
+  </div>
 </section>
 
+<!-- ABOUT -->
+<section>
+  <div class="title">ABOUT</div>
+
+  <div class="about">
+    Unique Brain is not just a clothing brand.  
+    It is a mindset built for people who think different, move different, and create their own path.
+  </div>
+</section>
+
+<!-- DETAILS -->
+<section>
+  <div class="title">DETAILS</div>
+
+  <div class="details">
+    <div class="box">
+      <h3>DESIGN</h3>
+      <p>Minimal, clean and powerful visual identity.</p>
+    </div>
+
+    <div class="box">
+      <h3>QUALITY</h3>
+      <p>Premium materials focused on long-lasting wear.</p>
+    </div>
+
+    <div class="box">
+      <h3>VISION</h3>
+      <p>Building a new mindset through fashion.</p>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
 <footer>
-  INSTAGRAM
+  INSTAGRAM @UNIQUEBRAIN
 </footer>
 
 </body>
